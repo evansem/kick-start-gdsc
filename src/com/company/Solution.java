@@ -40,7 +40,8 @@ public class Solution {
         for (int i = 0; i < correct.length(); i++) {
             if (correct.charAt(i) != typed.charAt(i)) {
                 //Try to remove it
-                return 1 + matchPossible(correct, removeAt(typed, i));
+                //return 1 + matchPossible(correct, removeAt(typed, i));
+                return 1 + matchPossible(correct.substring(i), typed.substring(i + 1));
             }
         }
 
