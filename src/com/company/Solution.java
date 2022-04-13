@@ -26,10 +26,27 @@ public class Solution {
     }
 
     public static int matchPossible(String correct, String typed) throws Impossible {
-        
+        int lengthDiff = typed.length() - correct.length();
+
+        if (correct.equals(typed)){
+            return 0;
+        } else if (lengthDiff <= 0) {
+            //Hence also covering if they are of the same length but different
+            throw new Impossible();
+        }
+
+        for (int i = 0; i < correct.length(); i++) {
+            if (correct.charAt(1) != typed.charAt(1)) {
+                //Try to remove it
+                return 1 + matchPossible(correct, removeAt(typed, i));
+            }
+        }
 
         return 0;
     }
 
+    public static String removeAt(String data, int index){
+        return new StringBuilder(data).deleteCharAt(index).toString();
+    }
 
 }
