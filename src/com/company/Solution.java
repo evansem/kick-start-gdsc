@@ -10,9 +10,11 @@ public class Solution {
     public static void main(String[] args) {
         Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
         int t = in.nextInt(); // Scanner has functions to read ints, longs, strings, chars, etc.
+        in.nextLine();
+
         for (int i = 1; i <= t; ++i) {
-            String correct = in.next();
-            String typed = in.next();
+            String correct = in.nextLine();
+            String typed = in.nextLine();
 
 
             try {
@@ -36,13 +38,13 @@ public class Solution {
         }
 
         for (int i = 0; i < correct.length(); i++) {
-            if (correct.charAt(1) != typed.charAt(1)) {
+            if (correct.charAt(i) != typed.charAt(i)) {
                 //Try to remove it
                 return 1 + matchPossible(correct, removeAt(typed, i));
             }
         }
 
-        return 0;
+        return lengthDiff;
     }
 
     public static String removeAt(String data, int index){
